@@ -1,5 +1,12 @@
-mkdir release\bin
-mkdir release\QuestTextSender
+@REM archive name
+FOR /F "tokens=*" %%g IN ('python3 -c "import version; print(version.VERSION.strip())"') do (SET VAR=%%g)
+set rel_dir="wow_tts"
+set "zipFile=wowtts_%VAR%.zip"
+rmdir /s /q "%rel_dir%"
+del %zipFile%
+
+mkdir %rel_dir%\bin
+mkdir %rel_dir%\QuestTextSender
 
 @REM build screen reader wrapper
 PyInstaller -F wowtts.py
@@ -16,8 +23,9 @@ IF %ERRORLEVEL% NEQ 0 (
 cd ..
 
 @REM build release package
-copy dist\wowtts.exe release\wowtts.exe
-xcopy /E /H /C /I /Y QuestTextSender release\QuestTextSender
-xcopy /E /I /Y LibSerpix\LibSerpix release\QuestTextSender\Libs\LibSerpix
-copy libserpix_rs\target\release\wow.exe release\bin\parser.exe
-@REM copy parser.py release\
+copy dist\wowtts.exe %rel_dir%\wowtts.exe
+xcopy /E /H /C /I /Y QuestTextSender %rel_dir%\QuestTextSender
+xcopy /E /I /Y LibSerpix\LibSerpix %rel_dir%\QuestTextSender\Libs\LibSerpix
+copy libserpix_rs\target\release\wow.exe %rel_dir%\bin\parser.exe
+
+powershell -Command "Add-Type -A 'System.IO.Compression.FileSystem'; [System.IO.Compression.ZipFile]::CreateFromDirectory('%rel_dir%', '%zipFile%')"

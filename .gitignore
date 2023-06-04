@@ -1,6 +1,8 @@
+*.zip
 bin/
 wow.exe
 release/
+wow_tts/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
