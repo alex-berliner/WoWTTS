@@ -6,7 +6,7 @@ rmdir /s /q "%rel_dir%"
 del %zipFile%
 
 mkdir %rel_dir%\bin
-mkdir %rel_dir%\QuestTextSender
+mkdir %rel_dir%\WoWTTS
 
 @REM build screen reader wrapper
 PyInstaller -F wowtts.py
@@ -24,8 +24,8 @@ cd ..
 
 @REM build release package
 copy dist\wowtts.exe %rel_dir%\wowtts.exe
-xcopy /E /H /C /I /Y QuestTextSender %rel_dir%\QuestTextSender
-xcopy /E /I /Y LibSerpix\LibSerpix %rel_dir%\QuestTextSender\Libs\LibSerpix
+xcopy /E /H /C /I /Y WoWTTS %rel_dir%\WoWTTS
+xcopy /E /I /Y LibSerpix\LibSerpix %rel_dir%\WoWTTS\Libs\LibSerpix
 copy libserpix_rs\target\release\wow.exe %rel_dir%\bin\parser.exe
 
 powershell -Command "Add-Type -A 'System.IO.Compression.FileSystem'; [System.IO.Compression.ZipFile]::CreateFromDirectory('%rel_dir%', '%zipFile%')"
