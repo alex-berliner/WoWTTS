@@ -1,4 +1,3 @@
-mkdir WoWTTS
 mkdir release
 mkdir release\QuestTextSender
 
@@ -10,6 +9,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 cd ..
 
+@REM build release package
 xcopy /E /H /C /I /Y QuestTextSender release\QuestTextSender
 xcopy /E /I /Y LibSerpix\LibSerpix release\QuestTextSender\Libs\LibSerpix
 copy libserpix_rs\target\release\wow.exe release\
