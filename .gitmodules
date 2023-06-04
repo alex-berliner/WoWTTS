@@ -1,0 +1,6 @@
+[submodule "libserpix_rs"]
+	path = libserpix_rs
+	url = https://github.com/alex-berliner/libserpix_rs
+[submodule "LibSerpix"]
+	path = LibSerpix
+	url = https://github.com/alex-berliner/LibSerpix
