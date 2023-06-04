@@ -42,6 +42,7 @@ def read_output(proc):
             play_audio(temp_filename)
 
 if __name__ == '__main__':
+    print("https://github.com/alex-berliner/WoWTTS")
     proc = subprocess.Popen(['bin\parser.exe'], stdout=subprocess.PIPE)
     t = threading.Thread(target=read_output, args=(proc,))
     t.start()
