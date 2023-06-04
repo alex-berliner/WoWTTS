@@ -2,9 +2,10 @@
 Real time text-to-speech for World of Warcraft quests using LibSerpix!
 ## Download
 ## First time setup
-1. Ensure your UI scale is set to 100% at all times. Windowed and fullscreen are both supported
-2. Ensure no color-altering features are being used
-3. Copy the QuestTextSender addon into your addons folder
+1. Install VLC Media Player https://www.videolan.org/vlc/download-windows.html
+2. Ensure your UI scale is set to 100% at all times. Windowed and fullscreen are both supported
+3. Ensure no color-altering features are being used
+4. Copy the QuestTextSender addon into your addons folder
 ## Usage
 Open WoW and turn on the QuestTextSender addon. Run WoWTTS.exe. Text-to-speech is performed on the following events:
 
