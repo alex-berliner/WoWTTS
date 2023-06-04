@@ -26,7 +26,10 @@ def play_audio(file_path):
 
 def read_output(proc):
     for line in iter(proc.stdout.readline, b''):
-        data = json.loads(line.decode('utf-8'))
+        try:
+            data = json.loads(line.decode('utf-8'))
+        except:
+            continue
         if "u" in data and "qtts" in data["u"] and len(data["u"]["qtts"]) > 0:
             qd = ""
             for k in data["u"]["qtts"]:
