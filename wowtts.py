@@ -1,7 +1,5 @@
 from gtts import gTTS
-from playsound import playsound
 import json
-import multiprocessing
 import subprocess
 import sys
 import vlc
@@ -9,9 +7,22 @@ import time
 import tempfile
 import threading
 
+current_player = None
+
 def play_audio(file_path):
-    player = vlc.MediaPlayer(file_path)
+    global current_player
+
+    if current_player is not None:
+        current_player.stop()
+
+    print("Playing")
+    instance = vlc.Instance()
+    player = instance.media_player_new()
+    media = instance.media_new(file_path)
+    player.set_media(media)
     player.play()
+
+    current_player = player
 
 def read_output(proc):
     for line in iter(proc.stdout.readline, b''):
