@@ -27,5 +27,6 @@ copy dist\wowtts.exe %rel_dir%\wowtts.exe
 xcopy /E /H /C /I /Y WoWTTS %rel_dir%\WoWTTS
 xcopy /E /I /Y LibSerpix\LibSerpix %rel_dir%\WoWTTS\Libs\LibSerpix
 copy libserpix_rs\target\release\wow.exe %rel_dir%\bin\parser.exe
+copy README.md %rel_dir%\
 
 powershell -Command "Add-Type -A 'System.IO.Compression.FileSystem'; [System.IO.Compression.ZipFile]::CreateFromDirectory('%rel_dir%', '%zipFile%')"
