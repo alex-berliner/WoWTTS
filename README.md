@@ -1,5 +1,5 @@
 ### WoW TTS
-Real time text-to-speech for World of Warcraft quests using LibSerpix!
+Real time text-to-speech for World of Warcraft quests using [libserpix_rs](https://github.com/alex-berliner/libserpix_rs)!
 ## Download
 https://github.com/alex-berliner/WoWTTS/releases
 ## First time setup
