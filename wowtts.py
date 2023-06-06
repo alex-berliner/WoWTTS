@@ -45,6 +45,6 @@ def read_output(proc):
 if __name__ == '__main__':
     print("https://github.com/alex-berliner/WoWTTS")
     print(f"Version {version.VERSION}")
-    proc = subprocess.Popen(['bin\parser.exe'], stdout=subprocess.PIPE)
+    proc = subprocess.Popen(['parser.exe'], stdout=subprocess.PIPE)
     t = threading.Thread(target=read_output, args=(proc,))
     t.start()

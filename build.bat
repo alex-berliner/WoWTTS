@@ -1,3 +1,4 @@
+@echo off
 @REM archive name
 FOR /F "tokens=*" %%g IN ('python3 -c "import version; print(version.VERSION.strip())"') do (SET VAR=%%g)
 set rel_dir="wow_tts"
@@ -8,10 +9,6 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 del %zipFile%
-IF %ERRORLEVEL% NEQ 0 (
-    exit /b %ERRORLEVEL%
-)
-
 mkdir %rel_dir%\bin
 
 @REM build screen reader wrapper
@@ -29,7 +26,8 @@ IF %ERRORLEVEL% NEQ 0 (
 cd ..
 
 @REM build release package
-copy dist\wowtts.exe %rel_dir%\wowtts.exe
+copy dist\wowtts.exe %rel_dir%\bin\wowtts.exe
+copy assets\wowtts.bat %rel_dir%\
 xcopy /E /H /C /I /Y AddOns %rel_dir%\AddOns
 xcopy /E /I /Y LibSerpix\LibSerpix %rel_dir%\AddOns\WoWTTS\Libs\LibSerpix
 copy libserpix_rs\target\release\wow.exe %rel_dir%\bin\parser.exe
