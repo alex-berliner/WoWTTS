@@ -1,6 +1,7 @@
 *.zip
 bin/
 wow.exe
+WoWTTS/
 release/
 wow_tts/
 # Byte-compiled / optimized / DLL files

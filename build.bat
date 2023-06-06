@@ -1,7 +1,7 @@
 @echo off
 @REM archive name
 FOR /F "tokens=*" %%g IN ('python3 -c "import version; print(version.VERSION.strip())"') do (SET VAR=%%g)
-set rel_dir="wow_tts"
+set rel_dir="WoWTTS"
 set "zipFile=wowtts_%VAR%.zip"
 rmdir /s /q "%rel_dir%"
 IF %ERRORLEVEL% NEQ 0 (
@@ -9,7 +9,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 del %zipFile%
-mkdir %rel_dir%\bin
+mkdir %rel_dir%\%rel_dir%\bin
 
 @REM build screen reader wrapper
 PyInstaller -F wowtts.py
@@ -26,11 +26,11 @@ IF %ERRORLEVEL% NEQ 0 (
 cd ..
 
 @REM build release package
-copy dist\wowtts.exe %rel_dir%\bin\wowtts.exe
-copy assets\wowtts.bat %rel_dir%\
-xcopy /E /H /C /I /Y AddOns %rel_dir%\AddOns
-xcopy /E /I /Y LibSerpix\LibSerpix %rel_dir%\AddOns\WoWTTS\Libs\LibSerpix
-copy libserpix_rs\target\release\wow.exe %rel_dir%\bin\parser.exe
-copy README.md %rel_dir%\
+copy assets\WoWTTS.bat %rel_dir%\%rel_dir%\
+copy dist\wowtts.exe %rel_dir%\%rel_dir%\bin\wowtts.exe
+xcopy /E /H /C /I /Y AddOns %rel_dir%\%rel_dir%\AddOns
+xcopy /E /I /Y LibSerpix\LibSerpix %rel_dir%\%rel_dir%\AddOns\WoWTTS\Libs\LibSerpix
+copy libserpix_rs\target\release\wow.exe %rel_dir%\%rel_dir%\bin\parser.exe
+copy README.md %rel_dir%\%rel_dir%\
 
 powershell -Command "Add-Type -A 'System.IO.Compression.FileSystem'; [System.IO.Compression.ZipFile]::CreateFromDirectory('%rel_dir%', '%zipFile%')"
