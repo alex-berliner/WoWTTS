@@ -7,9 +7,11 @@ https://github.com/alex-berliner/WoWTTS/releases
 2. Ensure your UI scale is set to 100% at all times. Windowed and fullscreen are both supported
 3. Ensure no color-altering features are being used
 4. Copy the AddOns folder onto your addons folder
+5. Enable WoWTTS and !Swatter in the WoW client
 ## Usage
-Open WoW and turn on the WoWTTS and !Swatter addons. Run WoWTTS.exe. Text-to-speech is performed on the following events:
+Run WoWTTS.exe. 
 
+Text-to-speech is performed on the following events:
 1. Reading quest text
 2. Reading quest progress text
 3. Reading quest completion text
