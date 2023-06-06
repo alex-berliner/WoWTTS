@@ -21,3 +21,4 @@ This program is a kooky experiment that transmits data-containing pixels on the 
 
 1. Anything that impacts the size or color of the drawn pixels will drop communication
 2. The screen reader is capable of missing messages. Try clicking on an NPC again if you think your quest wasn't played
+3. Only retail is currently supported
